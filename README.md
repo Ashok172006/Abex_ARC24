@@ -6,8 +6,7 @@ The script relevant to this documentation can be found in the repository Anvesha
   3. Subscriber - Publisher relationship
   4. Intuition on variables and functions
   5. Flow of control in the script
-     
-There are many topics used in this code, mainly accel_stepper.h and some other topics for sensors have been used in the code like Adafruit_Sensor.h, Adafruit_BMP085_U.h, DHT.h, DallasTemperature.h.
+
 
 ## Libraries Used
 
