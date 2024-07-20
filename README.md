@@ -22,9 +22,15 @@ There are many topics used in this code, mainly accel_stepper.h and some other t
 
 `Adafruit_BMP085_U.h`: Driver for the BMP085 barometric pressure sensor
 
-`OneWire.h`: Enables serial communication with multiple devices using a single wire, to reduce wiring complexity.
+`OneWire.h`: Enables serial communication with multiple devices using a single wire, to reduce the number of wires on the board.
 
 `DallasTemperature.h`: Enables communication with multiple DS18B20 sensors over a single wire (with the OneWire protocol)
+
+## ROS Topics Used
+
+`sensor_data`: The script publishes all the received sensor data on this topic, for use by other nodes.
+
+`motor_data_science`: Controls are sent through a GUI, and these are stored in an array `science_motors`. The values in this array are used to execute operations like dropping soil, running the pump, and performing spectrometry.
 
 
 
