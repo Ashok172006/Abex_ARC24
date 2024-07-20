@@ -26,7 +26,7 @@ The `AccelStepper.h` library offers more advanced functionality for controlling 
 
 `DallasTemperature.h`: Enables communication with multiple DS18B20 sensors over a single wire (with the OneWire protocol)
 
-## ROS Topics Used
+## Subscriber-Publisher Relationship
 
 `sensor_data`: The script publishes all the received sensor data on this topic, for use by other nodes.
 
