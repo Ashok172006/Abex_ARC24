@@ -29,6 +29,10 @@ The `AccelStepper.h` library offers more advanced functionality for controlling 
 `sensor_data`: The script publishes all the received sensor data on this topic, for use by other nodes.
 
 `motor_data_science`: Controls are sent through a GUI, and these are stored in an array `science_motors`. The values in this array are used to execute operations like dropping soil, running the pump, and performing spectrometry.
-##
+## Functions
+### loop function
+
+
+
 
 
