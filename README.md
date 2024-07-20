@@ -12,7 +12,7 @@ There are many topics used in this code, mainly accel_stepper.h and some other t
 
 ## Libraries Used
 
-`AccelStepper.h`: Provides versatile control of stepper motors; an alternative is the standard `Stepper.h` library provided by arduino.
+The `AccelStepper.h` library offers more advanced functionality for controlling stepper motors compared to the standard `Stepper.h` library provided by Arduino. It includes features such as acceleration control and other advanced parameters, which are not available in the `Stepper.h` library.
 
 `Adafruit_Sensor.h`: Used to interface with Adafruit Sensors, like the DHT11 moisture sensor in our case.
 
