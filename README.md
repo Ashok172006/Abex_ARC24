@@ -64,9 +64,15 @@ These variables manage the overall behaviour of the script.
 
 
 ## Functions
-### loop function
+
+### Setup Function
+
+
+
+### Loop Function
 In this Function we are using Science_motors, which is a list containing the commands received from a graphical user interface (GUI).In this code, GUI is likely a remote control interface that sends commands to the rover. This interface allows a user to control various aspects of the rover, such as motor movements and sensor readings, by sending data to the rover over a communication channel, likely ROS (Robot Operating System).
-#### Main Control loop
+
+#### Main Control Loop
 
 1.`Motor Rotation`:
   * If sciencemotors[0] is non-zero, it calls rotateMotor(-90) to rotate the motor by -90 degrees and then resets sciencemotors[0] to 0.
@@ -107,6 +113,7 @@ Resets sciencemotors[3] to 0.
   * Now we ove the stepper motor by the following command
     ```python
     stepper.runToPosition();
+    
 ### Runpumps
 The runpumps function controls the activation of two different pumps connected to digital pins(one of them is connected to DR12 and other to DR21). The function takes an integer argument `a` which determines which pump to activate and for how long. Let pump1 be the pump connected to DR12 and pump2 be the pump connected to DR21
 
