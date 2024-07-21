@@ -109,6 +109,22 @@ Now,
 * Stop Motor
   * After the motor has rotated the desired number of steps, both John1 and John2 are set low to stop the motor.
 
+### encoderISR
+The encoderISR function is an Interrupt Service Routine (ISR) designed to handle encoder pulses and update the encoder count based on the direction of rotation. This function is used to track the position of a DC motor shaft accurately.
+* Read Encoder States
+  * The function reads the current states of the two encoder channels (A and B) using digitalRead:
+    ```python
+    int stateA = digitalRead(ENCA);
+    int stateB = digitalRead(ENCB);
+* Update Encoder Count
+  * The function compares the states of channels A and B:
+     ```python
+     if (stateA == stateB) encoderCount++;
+     else encoderCount--;
+  * If the states of both channels are the same (stateA == stateB), the encoderCount is incremented, indicating forward rotation and if they are not equal, the encoderCount is decremented indicating reverse direction.
+
+
+
 
 
 
