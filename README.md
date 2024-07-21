@@ -62,8 +62,8 @@ Resets sciencemotors[3] to 0.
   * The movestepper function controls a stepper motor, rotating it by a specified `angle`. This angle can be either positive or negative.
   * Now using the angle which we got, We calculate the number of steps required to rotate the stepper motor by the specified angle.
   * Assuming the stepper motor has 200 steps per revolution (1.8 degrees per step), the calculation is:
-  ```python
-  long steps = (200 / 360.0) * abs(angle);
+    ```python
+    long steps = (200 / 360.0) * abs(angle);
 * Get the new position
   * now we target to get the new position
   * by the following command, we change the stepper.currentPosition() to the new position:
@@ -88,7 +88,26 @@ The runpumps function controls the activation of two different pumps connected t
 * a==4
   * Pump2 activates and runs for 2 seconds(delay is given in the function for the pump to opearate) and then it stops.
 
-
+### Rotate motor
+The rotateMotor function is designed to rotate a Johnson motor to a specified angle using an encoder for feedback. It sets the motor's direction and runs it until the desired angle is achieved. 
+* Similar to the stepper motor function, here also we calculate Steps.
+  ```python
+  long steps = (stepsPerOutputRevolution / 360) * abs(angle);
+  
+In this, stepsPerOutputRevolution is a variable which is breifly described above.
+We reset encodercount as 0. Encodercount here is just used for the operation in the while loop.
+Now,
+* angle > 0
+  * The motor is set to rotate in one direction by setting John1 high and John2 low.
+* angle < 0
+  * The motor is set to rotate in the opposite direction by setting John1 low and John2 high.
+* Rotate motor
+  * The motor is allowed to run until the absolute value of the encoder count reaches the calculated steps:
+    ```python
+    while (abs(encoderCount) < steps) delay(10);
+  * The motor continues to rotate during this loop, and the encoder interrupt service routine (ISR) updates the encoderCount to provide feedback
+* Stop Motor
+  * After the motor has rotated the desired number of steps, both John1 and John2 are set low to stop the motor.
 
 
 
