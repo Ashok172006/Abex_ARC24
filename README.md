@@ -29,6 +29,40 @@ The `AccelStepper.h` library offers more advanced functionality for controlling 
 `sensor_data`: The script publishes all the received sensor data on this topic, for use by other nodes.
 
 `motor_data_science`: Controls are sent through a GUI, and these are stored in an array `science_motors`. The values in this array are used to execute operations like dropping soil, running the pump, and performing spectrometry.
+
+## Variables
+
+### Control Variables
+
+These variables manage the overall behaviour of the script.
+
+`sciencemotors[]`: stores commands received from the GUI, and controls motor actions and sensor data collection. It is a 1 dimensional list of integers.
+
+`encoderCount`: Tracks position of encoder for motor control
+
+`stepsPerRevolution`, `gearRatio`, `stepsPerOutputRevolution`: Parameters for the motor's step count and gear ratio.
+
+### Sensor Data Variables
+
+`soilMoisture_a`, `soilMoisture_b`: stores readings from soil moisture sensors.
+
+`dhtDelayMS`: Determines the delay for DHT sensor readings.
+
+`sensor_data`: Holds the array of all sensor readings to be published.
+
+### Supporting Variables
+
+`oneWireBus`: Defines the pin for the OneWire bus used by DS18B20 sensors.
+
+`init_list[]`: Used to initialize the sensor data array.
+
+`sensor`: stores temperature and humidity readings from DHT sensor.
+
+`sensors`: stores temperature readings from DS18B20 sensors.
+
+`stepper`: Object for controlling the stepper motor.
+
+
 ## Functions
 ### loop function
 In this Function we are using Science_motors, which is a list containing the commands received from a graphical user interface (GUI).In this code, GUI is likely a remote control interface that sends commands to the rover. This interface allows a user to control various aspects of the rover, such as motor movements and sensor readings, by sending data to the rover over a communication channel, likely ROS (Robot Operating System).
