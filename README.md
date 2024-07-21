@@ -57,6 +57,37 @@ Resets sciencemotors[3] to 0.
 5.`Delay`:
   * The loop includes a delay of 50 milliseconds.
 
+### MoveStepper
+* Steps
+  * The movestepper function controls a stepper motor, rotating it by a specified `angle`. This angle can be either positive or negative.
+  * Now using the angle which we got, We calculate the number of steps required to rotate the stepper motor by the specified angle.
+  * Assuming the stepper motor has 200 steps per revolution (1.8 degrees per step), the calculation is:
+  ```python
+  long steps = (200 / 360.0) * abs(angle);
+* Get the new position
+  * now we target to get the new position
+  * by the following command, we change the stepper.currentPosition() to the new position:
+    ```python
+    stepper.moveTo(stepper.currentPosition() + steps);
+* Move the motor
+  * Now we ove the stepper motor by the following command
+    ```python
+    stepper.runToPosition();
+### Runpumps
+The runpumps function controls the activation of two different pumps connected to digital pins(one of them is connected to DR12 and other to DR21). The function takes an integer argument `a` which determines which pump to activate and for how long. Let pump1 be the pump connected to DR12 and pump2 be the pump connected to DR21
+
+* a==1
+  * Pump1 activates and runs for 8 seconds(delay is given in the function for the pump to opearate) and then it stops.
+    
+* a==2
+  * Pump2 activates and runs for 8 seconds(delay is given in the function for the pump to opearate) and then it stops.
+  
+* a==3
+  * Pump1 activates and runs for 2 seconds(delay is given in the function for the pump to opearate) and then it stops.
+    
+* a==4
+  * Pump2 activates and runs for 2 seconds(delay is given in the function for the pump to opearate) and then it stops.
+
 
 
 
