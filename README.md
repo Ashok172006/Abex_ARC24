@@ -113,18 +113,18 @@ In this Function we are using the `science_motors` array, which contains the com
 
 #### Main Control Loop
 
-1.**Motor Rotation**:
+1. **Motor Rotation**:
   * If `sciencemotors[0]` is non-zero (controlled by the GUI), it calls `rotateMotor(-90)` to rotate the motor by -90 degrees, and then resets `sciencemotors[0]` to 0.
 
-2.**Pump Control**:
+2. **Pump Control**:
   * If `sciencemotors[1]` is non-zero, it calls `runpumps(sciencemotors[1])` to control the pumps and then resets `sciencemotors[1]` to 0.
 
-3.**Stepper Motor Movement**:
+3. **Stepper Motor Movement**:
   * If `sciencemotors[2]` is 1, it calls `movestepper(90)` to move the stepper motor by 90 degrees.
   * If `sciencemotors[2]` is 2, it calls `movestepper(-90)` to move the stepper motor by -90 degrees.
 It then resets `sciencemotors[2]` to 0.
 
-4.**Sensor Data Collection and Publishing**:
+4. **Sensor Data Collection and Publishing**:
   * If `sciencemotors[3]` is 1, it collects data from various sensors:
       * Temperature and humidity from DHT11.
       * Soil moisture from 2 LM393 sensors. Two readings are likely taken to increase the accuracy of the combined reading.
@@ -133,7 +133,7 @@ It then resets `sciencemotors[2]` to 0.
 Publishes the collected data to the `sensor_data` topic.
 Resets `sciencemotors[3]` to 0.
 
-5.**Delay**:
+5. **Delay**:
   * The loop includes a delay of 50 milliseconds.
 
 ### MoveStepper
