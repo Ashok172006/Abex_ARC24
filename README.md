@@ -31,6 +31,32 @@ The `AccelStepper.h` library offers more advanced functionality for controlling 
 `motor_data_science`: Controls are sent through a GUI, and these are stored in an array `science_motors`. The values in this array are used to execute operations like dropping soil, running the pump, and performing spectrometry.
 ## Functions
 ### loop function
+In this Function we are using Science_motors, which is a list containing the commands received from a graphical user interface (GUI).In this code, GUI is likely a remote control interface that sends commands to the rover. This interface allows a user to control various aspects of the rover, such as motor movements and sensor readings, by sending data to the rover over a communication channel, likely ROS (Robot Operating System).
+#### Main Control loop
+
+1.`Motor Rotation`:
+  * If sciencemotors[0] is non-zero, it calls rotateMotor(-90) to rotate the motor by -90 degrees and then resets sciencemotors[0] to 0.
+
+2.`Pump Control`:
+  * If sciencemotors[1] is non-zero, it calls runpumps(sciencemotors[1]) to control the pumps and then resets sciencemotors[1] to 0.
+
+3.`Stepper Motor Movement`:
+  * If sciencemotors[2] is 1, it calls movestepper(90) to move the stepper motor by 90 degrees.
+  * If sciencemotors[2] is 2, it calls movestepper(-90) to move the stepper motor by -90 degrees.
+It then resets sciencemotors[2] to 0.
+
+4.`Sensor Data Collection and Publishing`:
+  * If sciencemotors[3] is 1, it collects data from various sensors:
+      * Temperature and humidity from DHT11.
+      * Soil moisture from analog sensors.
+      * Pressure and altitude from BMP180.
+      * Temperature from DS18B20.
+Publishes the collected data to the `sensor_data` topic.
+Resets sciencemotors[3] to 0.
+
+5.`Delay`:
+  * The loop includes a delay of 50 milliseconds.
+
 
 
 
