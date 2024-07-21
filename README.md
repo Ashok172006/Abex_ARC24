@@ -67,7 +67,47 @@ These variables manage the overall behaviour of the script.
 
 ### Setup Function
 
-Initialize ROS communication
+- Initializes ROS communication using a ROS NodeHandle `nh`.
+
+- Initialize and configure DHT sensor:
+
+```python
+dht.begin();
+sensor_t sensor;
+dht.temperature().getSensor(&sensor);
+dhtDelayMS = sensor.min_delay / 1000;
+```
+
+- Initialize I2C communication for BMP180:
+
+```python
+Wire.begin(SDA_PIN, SCL_PIN);
+```
+
+- Initializes DS18B20 Sensor with OneWire protocol
+  
+```python
+sensors.begin();
+```
+
+- Initialize Sensor Data Array with `sensor_data.data`
+- configure GPIO pins for sensors, motors and encoders
+- set max speed and acceleration for stepper motor
+
+```python
+stepper.setMaxSpeed(20); // Adjust as needed
+stepper.setAcceleration(10); // Adjust as needed
+```
+- Attach Interrupt for Encoder:
+
+This allows encoder data to be processed as soon as they are received, instead of waiting for the main loop completion.
+
+```python
+attachInterrupt(digitalPinToInterrupt(ENCA), encoderISR, CHANGE);
+```
+
+
+
 
 ### Loop Function
 In this Function we are using the `science_motors` array, which contains the commands received from a GUI. This allows a user to control motor movements and sensor readings.
