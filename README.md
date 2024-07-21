@@ -107,35 +107,33 @@ These variables manage the overall behaviour of the script.
   ```
 
 
-
-
 ### Loop Function
 In this Function we are using the `science_motors` array, which contains the commands received from a GUI. This allows a user to control motor movements and sensor readings.
 
 
 #### Main Control Loop
 
-1.`Motor Rotation`:
-  * If sciencemotors[0] is non-zero, it calls rotateMotor(-90) to rotate the motor by -90 degrees and then resets sciencemotors[0] to 0.
+1.**Motor Rotation**:
+  * If `sciencemotors[0]` is non-zero (controlled by the GUI), it calls `rotateMotor(-90)` to rotate the motor by -90 degrees, and then resets `sciencemotors[0]` to 0.
 
-2.`Pump Control`:
-  * If sciencemotors[1] is non-zero, it calls runpumps(sciencemotors[1]) to control the pumps and then resets sciencemotors[1] to 0.
+2.**Pump Control**:
+  * If `sciencemotors[1]` is non-zero, it calls `runpumps(sciencemotors[1])` to control the pumps and then resets `sciencemotors[1]` to 0.
 
-3.`Stepper Motor Movement`:
-  * If sciencemotors[2] is 1, it calls movestepper(90) to move the stepper motor by 90 degrees.
-  * If sciencemotors[2] is 2, it calls movestepper(-90) to move the stepper motor by -90 degrees.
-It then resets sciencemotors[2] to 0.
+3.**Stepper Motor Movement**:
+  * If `sciencemotors[2]` is 1, it calls `movestepper(90)` to move the stepper motor by 90 degrees.
+  * If `sciencemotors[2]` is 2, it calls `movestepper(-90)` to move the stepper motor by -90 degrees.
+It then resets `sciencemotors[2]` to 0.
 
-4.`Sensor Data Collection and Publishing`:
-  * If sciencemotors[3] is 1, it collects data from various sensors:
+4.**Sensor Data Collection and Publishing**:
+  * If `sciencemotors[3]` is 1, it collects data from various sensors:
       * Temperature and humidity from DHT11.
-      * Soil moisture from analog sensors.
-      * Pressure and altitude from BMP180.
+      * Soil moisture from 2 LM393 sensors. Two readings are likely taken to increase the accuracy of the combined reading.
+      * Pressure and temperature from BMP180.
       * Temperature from DS18B20.
 Publishes the collected data to the `sensor_data` topic.
-Resets sciencemotors[3] to 0.
+Resets `sciencemotors[3]` to 0.
 
-5.`Delay`:
+5.**Delay**:
   * The loop includes a delay of 50 milliseconds.
 
 ### MoveStepper
@@ -155,8 +153,8 @@ Resets sciencemotors[3] to 0.
     ```python
     stepper.runToPosition();
     
-### Runpumps
-The runpumps function controls the activation of two different pumps connected to digital pins(one of them is connected to DR12 and other to DR21). The function takes an integer argument `a` which determines which pump to activate and for how long. Let pump1 be the pump connected to DR12 and pump2 be the pump connected to DR21
+### runpumps
+The runpumps function controls the activation of two different pumps connected to digital pins (one of them is connected to DR12 and other to DR21). The function takes an integer argument `a` which determines which pump to activate and for how long. Let pump1 be the pump connected to DR12 and pump2 be the pump connected to DR21
 
 * a==1
   * Pump1 activates and runs for 8 seconds(delay is given in the function for the pump to opearate) and then it stops.
@@ -170,7 +168,7 @@ The runpumps function controls the activation of two different pumps connected t
 * a==4
   * Pump2 activates and runs for 2 seconds(delay is given in the function for the pump to opearate) and then it stops.
 
-### Rotate motor
+### rotateMotor
 The rotateMotor function is designed to rotate a Johnson motor to a specified angle using an encoder for feedback. It sets the motor's direction and runs it until the desired angle is achieved. 
 * Similar to the stepper motor function, here also we calculate Steps.
   ```python
