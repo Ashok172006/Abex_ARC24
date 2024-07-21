@@ -67,10 +67,11 @@ These variables manage the overall behaviour of the script.
 
 ### Setup Function
 
-
+Initialize ROS communication
 
 ### Loop Function
-In this Function we are using Science_motors, which is a list containing the commands received from a graphical user interface (GUI).In this code, GUI is likely a remote control interface that sends commands to the rover. This interface allows a user to control various aspects of the rover, such as motor movements and sensor readings, by sending data to the rover over a communication channel, likely ROS (Robot Operating System).
+In this Function we are using the `science_motors` array, which contains the commands received from a GUI. This allows a user to control motor movements and sensor readings.
+
 
 #### Main Control Loop
 
