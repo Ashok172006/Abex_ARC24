@@ -4,8 +4,9 @@ The script relevant to this documentation can be found in the repository Anvesha
 ## TABLE OF CONTENTS
   1. Libraries used
   3. Subscriber - Publisher relationship
-  4. Intuition on variables and functions
+  4. Intuition on variables 
   5. Flow of control in the script
+  6. Functions
 
 
 ## Libraries Used
@@ -62,6 +63,8 @@ These variables manage the overall behaviour of the script.
 
 `stepper`: Object for controlling the stepper motor.
 
+## Control Flow
+![image](https://github.com/user-attachments/assets/453e2262-75f7-4b40-99ef-4ed6d8d58c40)
 
 ## Functions
 
