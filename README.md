@@ -149,7 +149,7 @@ Resets `sciencemotors[3]` to 0.
     ```python
     stepper.moveTo(stepper.currentPosition() + steps);
 * Move the motor
-  * Now we ove the stepper motor by the following command
+  * Now we move the stepper motor by the following command
     ```python
     stepper.runToPosition();
     
